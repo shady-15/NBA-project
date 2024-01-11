@@ -34,7 +34,7 @@ def get_result(game_data, game_stats):
     
     basketball_games = {'today': [], 'yesterday': []}
     
-    # key is game id
+    # key game id
     iter = 0
     
     for game in game_data:
@@ -59,7 +59,7 @@ def get_result(game_data, game_stats):
         if game['home_team_score'] == game['visitor_team_score'] == 0:
             notification_message = (
                         "\n" + "=" * 38 + "\n"
-                        f" **This game will be played soon!**\n"
+                        f" **This game will be played later!**\n"
                         f":basketball: **{game['home_team']['full_name']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} **\n"
                         "\n" + "=" * 38 + "\n"
@@ -86,10 +86,10 @@ def get_result(game_data, game_stats):
 @app.route("/send")
 def send():
     
-    game_data = get_game_data()  # we get the game data for yesterday and today
+    game_data = get_game_data()  #game data yesterday and today
     print("getting data")
     
-    game_stats =  get_game_stats()  # we will get the stats for yesterday and today
+    game_stats =  get_game_stats()  #stats yesterday and today
     print("getting state")
     
     basketball_games = get_result(game_data, game_stats)

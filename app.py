@@ -58,19 +58,19 @@ def get_result(game_data, game_stats):
         game_day = datetime.strptime(game['date'], "%Y-%m-%dT%H:%M:%S.%fZ").day
         if game['home_team_score'] == game['visitor_team_score'] == 0:
             notification_message = (
-                        "\n" + "=" * 35 + "\n"
+                        "\n" + "=" * 38 + "\n"
                         f" **This game will be played soon!**\n"
                         f":basketball: **{game['home_team']['full_name']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} **\n"
-                        "\n" + "=" * 35 + "\n"
+                        "\n" + "=" * 38 + "\n"
                     )
         elif top_performer:
             notification_message = (
-                        "\n" + "=" * 35 + "\n"
+                        "\n" + "=" * 38 + "\n"
                         f":basketball: **{game['home_team']['full_name']} {game['home_team_score']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} {game['visitor_team_score']}**\n"
                         f":trophy: ** {top_performer[0]}, {top_performer[1]}pts / {top_performer[2]} ast / {top_performer[3]} reb**\n"
-                        "\n" + "=" * 35 + "\n"
+                        "\n" + "=" * 38 + "\n"
                     )
 
             

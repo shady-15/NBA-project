@@ -46,6 +46,7 @@ def get_result(game_data, game_stats):
         for game_state in game_stats:
             s_game_id = game_state['game']['id']
             if (game_id) == (s_game_id):
+                if game_state['player']== None : continue
                 player_name = game_state['player']['first_name'] + " " + game_state['player']['last_name']
                     
                 pts = game_state['pts']

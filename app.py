@@ -96,7 +96,7 @@ def send():
     basketball_games = get_result(game_data, game_stats)
     print("getting backet ball")
     
-    webhook_url = 'https://discord.com/api/webhooks/1194763132527181935/Lnzr7iDlZUfMWR0Cqnj6kIvDWzhwfue1vufoxiL77sfIyFjT9ZBBxFV-lj76miFiv30a'
+    webhook_url = 'https://discord.com/api/webhooks/1194944310852993075/STEHCw3REgL8QCUENXMQO79hea-4ScYy8Kv0xzJ94fl9fvw76UeH8TBLzyydn6bipXqV'
     # Calculate yesterday, today
     
     yesterday = (datetime.now(us_timezone) - timedelta(days=1)).strftime('%Y-%m-%d')

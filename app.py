@@ -7,17 +7,16 @@ import pytz
 us_timezone = pytz.timezone('America/New_York')
 
 
-
 app = Flask(__name__)
 
 def get_game_data():
     yesterday = (datetime.now(us_timezone) - timedelta(days=1)).strftime('%Y-%m-%d')
     today = (datetime.now(us_timezone)).strftime('%Y-%m-%d')
 
-    # API endpoint URL with correct query parameters
+    # API endpoint URL parameters
     games_url = f'https://www.balldontlie.io/api/v1/games?start_date={yesterday}&end_date={today}&per_page={100}'
 
-    # Fetch data from the API
+    # Fetch data 
     response = requests.get(games_url)
     return response.json()['data']
 
@@ -68,29 +67,28 @@ def get_result(game_data, game_stats):
         game_day = datetime.strptime(game['date'], "%Y-%m-%dT%H:%M:%S.%fZ").day
         if game['home_team_score'] == game['visitor_team_score'] == 0:
             notification_message = (
-                        "\n" + "=" * 70 + "\n"
-                        f" **This game will be played soon!**\n"
+                        "\n" + "=" * 40 + "\n"
+                        f" **This game will be played later !**\n"
                         f":basketball: **{game['home_team']['full_name']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} **\n"
-                        "\n" + "=" * 70 + "\n"
+                        "\n" + "=" * 40 + "\n"
                     )
         elif top_performer:
             notification_message = (
-                        "\n" + "=" * 70 + "\n"
+                        "\n" + "=" * 40 + "\n"
                         f":basketball: **{game['home_team']['full_name']} {game['home_team_score']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} {game['visitor_team_score']}**\n"
                         f":trophy: ** {top_performer[0]}, {top_performer[1]}pts / {top_performer[2]} ast / {top_performer[3]} reb**\n"
-                        "\n" + "=" * 70 + "\n"
+                        "\n" + "=" * 40 + "\n"
                     )
         else:
             notification_message = (
-                        "\n" + "=" * 70 + "\n"
+                        "\n" + "=" * 40 + "\n"
                         f" **Top scorer data unavailable now.**\n"
                         f":basketball: **{game['home_team']['full_name']} {game['home_team_score']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} {game['visitor_team_score']}**\n"
-                        "\n" + "=" * 70 + "\n"
+                        "\n" + "=" * 40 + "\n"
                     )
-
             
         if datetime.now(us_timezone).day == game_day:
             basketball_games['today'].append(notification_message)
@@ -99,7 +97,6 @@ def get_result(game_data, game_stats):
     return basketball_games
         
     
-
     
 @app.route("/send")
 def send():
@@ -120,8 +117,8 @@ def send():
     today = datetime.now(us_timezone).strftime('%Y-%m-%d')
     
     
-    # Yesterday's basketball games
-    # Post the date time(Yesterday)
+    # Yesterday games
+    # Post date time(Yesterday)
     requests.post(webhook_url, json={'content':f"\n\n\n:calendar: **{yesterday}**\n"})
     
     
@@ -131,8 +128,8 @@ def send():
         requests.post(webhook_url, json=data)
         # print(response.status_code)
 
-    # Today's basketball games
-    # Post the date time(Today)
+    # Today games
+    # Post date time(Today)
     requests.post(webhook_url, json={'content':f"\n\n\n:calendar: **{today}**\n"})
     for game in basketball_games['today']:
         data = {'content': game}
@@ -141,7 +138,6 @@ def send():
     print("Done")
     return 'Message sent to discord Posting channel!'
     
-
 
 
 @app.route('/')

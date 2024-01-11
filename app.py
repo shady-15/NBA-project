@@ -95,7 +95,7 @@ def send():
     print("getting state")
     
     basketball_games = get_result(game_data, game_stats)
-    print("getting backet ball")
+    print("getting basket ball")
     
     webhook_url = 'https://discord.com/api/webhooks/1194944310852993075/STEHCw3REgL8QCUENXMQO79hea-4ScYy8Kv0xzJ94fl9fvw76UeH8TBLzyydn6bipXqV'
     # Calculate yesterday, today

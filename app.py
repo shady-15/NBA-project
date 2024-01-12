@@ -26,7 +26,6 @@ def get_game_stats():
     stats_url = f"https://www.balldontlie.io/api/v1/stats?start_date={yesterday}&end_date={today}&per_page={100}"
     stats_response = requests.get(stats_url)
     
-    
     stats = []
     stats.extend(stats_response.json()["data"])
     page = 2

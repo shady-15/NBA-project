@@ -13,10 +13,9 @@ def get_game_data():
     yesterday = (datetime.now(us_timezone) - timedelta(days=1)).strftime('%Y-%m-%d')
     today = (datetime.now(us_timezone)).strftime('%Y-%m-%d')
 
-    # API endpoint parametres 
     games_url = f'https://www.balldontlie.io/api/v1/games?start_date={yesterday}&end_date={today}&per_page={100}'
 
-    # Fetch data 
+    # ici récup data 
     response = requests.get(games_url)
     return response.json()['data']
 

@@ -81,7 +81,7 @@ def get_result(game_data, game_stats):
         else:
             notification_message = (
                         "\n" + "=" * 40 + "\n"
-                        f" **Top scorer data unavailable now.**\n"
+                        f" **No top scorer for this game!.**\n"
                         f":basketball: **{game['home_team']['full_name']} {game['home_team_score']}**\n"
                         f":basketball: **{game['visitor_team']['full_name']} {game['visitor_team_score']}**\n"
                         "\n" + "=" * 40 + "\n"

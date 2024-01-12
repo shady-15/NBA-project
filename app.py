@@ -43,7 +43,7 @@ def get_result(game_data, game_stats):
     
     basketball_games = {'today': [], 'yesterday': []}
     
-    # key is game id
+    # game_id clé 
     for game in game_data:
         game_id = game['id']
         

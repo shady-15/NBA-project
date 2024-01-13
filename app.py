@@ -98,10 +98,10 @@ def get_result(game_data, game_stats):
 @app.route("/send")
 def send():
     
-    game_data = get_game_data()  # we get the game data for yesterday and today
+    game_data = get_game_data()  # data yesterday + today
     print("getting data")
     
-    game_stats =  get_game_stats()  # we will get the stats for yesterday and today
+    game_stats =  get_game_stats()  # stats yesterday + today
     print("getting state")
     
     basketball_games = get_result(game_data, game_stats)

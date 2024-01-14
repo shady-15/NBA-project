@@ -133,7 +133,7 @@ def send():
         requests.post(webhook_url, json=data)
         # print(response.status_code)
     print("Done")
-    return 'Message sent to discord Posting channel!'
+    return 'Message sent to discord channel!'
     
 
 
